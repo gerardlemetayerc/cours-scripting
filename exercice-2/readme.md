@@ -5,7 +5,10 @@ Importez le fichier users.csv, parcourez le et créez des utilisateurs à partir
 - prénom
 - nom
 
-Générez le nom d'utilisateur au format
-- Deux premières lettre du prénom + 2 premières lettres du prénom + date de création au format JJMMAAHHMMSS
+Générez les informations suivantes :
+- Nom d'utilisateur : deux premières lettre du prénom + 2 premières lettres du prénom + date de création au format JJMMAAHHMMSS
+- Mot de passe : catactères spéciaux et alphanumérique (total : 10)
 
 ## Créez les utilisateurs dans Zabbix à l'aide des APIs
+
+A l'aide de l'API Zabbix, générez les utilisateurs dans l'application.
