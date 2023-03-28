@@ -1,1 +1,1 @@
-# Implémentation de LLD sur l'API de rundeck afin de remonter des jobs en supervision
+# Création d'un script de sauvegarde MySQL et ordonnancement a l'aide de rundeck
