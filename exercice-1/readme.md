@@ -42,11 +42,11 @@ sudo systemctl restart zabbix-server zabbix-agent apache2
 sudo systemctl enable zabbix-server zabbix-agent apache2
 ```
 
-* Accédez à l'URL http://<votreip>/zabbix, les identifiants sont Admin / zabbix
+* Accédez à l'URL http://votreip/zabbix, les identifiants sont Admin / zabbix
 
 ## Générez le token API pour l'utilisateur administrateur
 
-A l'aide du menu d'administration du token du compte administrateur, générez un token pour les appels APIs
+A l'aide du menu d'administration du token du compte administrateur, générez un token pour les appels APIs : http://votreip/zabbix/zabbix.php?action=user.token.list
 
 ## Générez un utilisateur a l'aide de l'API zabbix
 
