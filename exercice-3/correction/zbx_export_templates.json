@@ -1,0 +1,109 @@
+{
+    "zabbix_export": {
+        "version": "6.4",
+        "template_groups": [
+            {
+                "uuid": "7df96b18c230490a9a0a9e2307226338",
+                "name": "Templates"
+            },
+            {
+                "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6",
+                "name": "Templates/Applications"
+            },
+            {
+                "uuid": "c2c162144c2d4c5491c8801193af4945",
+                "name": "Templates/Cloud"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "39297d88b83d42ccaa48031706710adf",
+                "template": "Template - Microsoft365",
+                "name": "Template - Microsoft365",
+                "groups": [
+                    {
+                        "name": "Templates"
+                    },
+                    {
+                        "name": "Templates/Applications"
+                    },
+                    {
+                        "name": "Templates/Cloud"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "4037f81a1c14441eb1fa71d801468533",
+                        "name": "M365 - Json Text",
+                        "type": "EXTERNAL",
+                        "key": "checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]",
+                        "delay": "1h",
+                        "history": "1d",
+                        "trends": "0",
+                        "value_type": "TEXT"
+                    }
+                ],
+                "discovery_rules": [
+                    {
+                        "uuid": "036e824bb92e444e92363830ca5fb44c",
+                        "name": "Microsoft 365 - Check Health - Discovery",
+                        "type": "DEPENDENT",
+                        "key": "microsoft365.checkHealth.masterItem",
+                        "delay": "0",
+                        "lifetime": "1d",
+                        "item_prototypes": [
+                            {
+                                "uuid": "348ef863ea794d38a3627f8f0cf7dc9d",
+                                "name": "Microsoft 365 - Service {#SERVICE} Status",
+                                "type": "DEPENDENT",
+                                "key": "microsoft365.servicestatus[{#ID}]",
+                                "delay": "0",
+                                "history": "30d",
+                                "trends": "0",
+                                "value_type": "TEXT",
+                                "preprocessing": [
+                                    {
+                                        "type": "JSONPATH",
+                                        "parameters": [
+                                            "$.value[?(@.id==\"{#ID}\")].status"
+                                        ]
+                                    }
+                                ],
+                                "master_item": {
+                                    "key": "checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]"
+                                },
+                                "tags": [
+                                    {
+                                        "tag": "Application",
+                                        "value": "Microsoft365"
+                                    }
+                                ]
+                            }
+                        ],
+                        "master_item": {
+                            "key": "checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]"
+                        },
+                        "lld_macro_paths": [
+                            {
+                                "lld_macro": "{#ID}",
+                                "path": "$.id"
+                            },
+                            {
+                                "lld_macro": "{#SERVICE}",
+                                "path": "$.service"
+                            }
+                        ],
+                        "preprocessing": [
+                            {
+                                "type": "JSONPATH",
+                                "parameters": [
+                                    "$.value"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

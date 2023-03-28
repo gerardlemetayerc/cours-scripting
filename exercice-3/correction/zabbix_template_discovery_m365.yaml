@@ -1,23 +1,10 @@
 zabbix_export:
   version: '6.4'
-  template_groups:
-    -
-      name: Templates
-    -
-      name: Templates/Applications
-    -
-      name: Templates/Cloud
   templates:
     -
+      uuid: 'abe3ebb9-6931-479a-af40-24dab48272b4'
       template: 'Template - Microsoft365'
       name: 'Template - Microsoft365'
-      groups:
-        -
-          name: Templates
-        -
-          name: Templates/Applications
-        -
-          name: Templates/Cloud
       items:
         -
           name: 'M365 - Json Text'
