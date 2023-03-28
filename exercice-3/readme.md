@@ -26,8 +26,26 @@ client_id={clientID}
 
 ## Intégration dans Zabbix
 
-Intégrez votre script dans zabbix (par défaut, les scripts sont présents dans /usr/local/share/zabbix/externalscripts).
-Le but ici sera de réaliser :
-* Une auto-discovery à l'aide du script afin de générer :*
-  * Un item, qui contiendra les données JSON
-  * Des item dépendants, qui iront chercher la valeur concernant l'application dans Microsoft365 dans le Json de l'item principal
+* Rendez-vous dans le fichier /etc/zabbix/zabbix_server.conf, et décommentez la ligne suivante :
+```
+ExternalScripts=/chemin/defaut/zabbix/external_script
+```
+* Assurez-vous que le chemin indiqué par le paramètre existe bien
+
+* Redémarrez le service Zabbix
+```
+sudo systemctl restart zabbix-server
+```
+
+* Installez Python sur votre serveur ainsi que les prérequis liés à votre script
+```
+sudo apt install python3-pip
+pip3 install requests
+```
+
+* Déployez votre script dans le répertoire précédemment décommenté.
+ * **NB : si votre script a été développé depuis une machine Windows, n'oubliez pas d'ajouter en en-tête de votre script la ligne suivante :**
+```
+#!/usr/bin/env python3
+```
+ * **!! NB 2 : N'oubliez pas de rendre votre script exécutable !!**
