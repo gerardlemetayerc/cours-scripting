@@ -25,4 +25,7 @@ Le but de ce lab est de monter en compétence sur du scripting. Des connaissance
   * Permet de :
     * Mettre en oeuvre un script Python afin de sauvegarder une base de données (celle de Zabbix en l'occurence)
     * Configurer une tâche dans Rundeck afin d'ordonnancer des sauvegardes de base de données
-
+* [Exercice 6 : Intégration de la supervision des jobs de rundeck dans Zabbix](/exercice-6)
+  * Permet de :
+    * Réaliser une auto-discovery Zabbix supplémentaire
+    * Découvrir les APIs de Rundeck
