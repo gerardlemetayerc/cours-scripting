@@ -1,0 +1,70 @@
+zabbix_export:
+  version: '6.4'
+  template_groups:
+    -
+      name: Templates
+    -
+      name: Templates/Applications
+    -
+      name: Templates/Cloud
+  templates:
+    -
+      template: 'Template - Microsoft365'
+      name: 'Template - Microsoft365'
+      groups:
+        -
+          name: Templates
+        -
+          name: Templates/Applications
+        -
+          name: Templates/Cloud
+      items:
+        -
+          name: 'M365 - Json Text'
+          type: EXTERNAL
+          key: 'checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]'
+          delay: 1h
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+      discovery_rules:
+        -
+          name: 'Microsoft 365 - Check Health - Discovery'
+          type: DEPENDENT
+          key: microsoft365.checkHealth.masterItem
+          delay: '0'
+          lifetime: 1d
+          item_prototypes:
+            -
+              name: 'Microsoft 365 - Service {#SERVICE} Status'
+              type: DEPENDENT
+              key: 'microsoft365.servicestatus[{#ID}]'
+              delay: '0'
+              history: 30d
+              trends: '0'
+              value_type: TEXT
+              preprocessing:
+                -
+                  type: JSONPATH
+                  parameters:
+                    - '$.value[?(@.id=="{#ID}")].status'
+              master_item:
+                key: 'checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]'
+              tags:
+                -
+                  tag: Application
+                  value: Microsoft365
+          master_item:
+            key: 'checkM365Health.py[{$TENANTID},{$ZABBIXAPPID},{$ZABBIXAPPSECRET}]'
+          lld_macro_paths:
+            -
+              lld_macro: '{#ID}'
+              path: $.id
+            -
+              lld_macro: '{#SERVICE}'
+              path: $.service
+          preprocessing:
+            -
+              type: JSONPATH
+              parameters:
+                - $.value
