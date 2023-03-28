@@ -27,3 +27,7 @@ client_id={clientID}
 ## Intégration dans Zabbix
 
 Intégrez votre script dans zabbix (par défaut, les scripts sont présents dans /usr/local/share/zabbix/externalscripts).
+Le but ici sera de réaliser :
+* Une auto-discovery à l'aide du script afin de générer :
+** Un item, qui contiendra les données JSon
+** Des item dépendants, qui iront chercher la valeur concernant l'application dans Microsoft365 dans le Json de l'item principal
