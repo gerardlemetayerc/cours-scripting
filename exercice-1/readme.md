@@ -12,4 +12,4 @@ A l'aide du menu d'administration du token du compte administrateur, générez u
 
 Générez un compte utilisateur à l'aide d'un appel API. La documentation est disponible [ici]( https://www.zabbix.com/documentation/current/en/manual/api/reference/user/create).
 
-La correction de cet exercice [ici](exercice-1/correction)
+La correction de cet exercice [ici](correction)
