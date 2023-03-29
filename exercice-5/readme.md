@@ -101,6 +101,10 @@ SHOW TABLES;
 25 rows in set (0,001 sec)
 ```
 
+## Se connecter à Rundeck
+
+Pour se connecter à Rundeck, l'URL du service est http://<votreip>:4440, et les identifiants sont admin / admin .
+
 * Debug en cas de démarrage en échec :
 
 Le fichier de log de rundeck se trouve dans **/var/log/rundeck/service.log** pour la partie démarrage du service.
