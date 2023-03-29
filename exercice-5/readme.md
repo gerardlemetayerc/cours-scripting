@@ -42,13 +42,20 @@ framework.server.url = http://<votreip>:4440
 
 **/etc/rundeck/rundeck-config.properties**
 ```
-grails.serverURL=http://<votreip>:4440
 [...]
-grails.plugin.databasemigration.updateOnStart=true
+# change hostname here
+grails.serverURL=http://<votreip>:4440
 dataSource.driverClassName = org.mariadb.jdbc.Driver
 dataSource.url = jdbc:mysql://localhost/rundeckdb?autoReconnect=true&useSSL=false
 dataSource.username = rundeck
 dataSource.password = password
+
+
+#dataSource.dbCreate = none
+#dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/rundeckdb;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=MONTH,HOUR,MINUTE,YEAR,SECONDS
+#grails.plugin.databasemigration.updateOnStart=true
+
+# Encryption for key storage
 ```
 
 * Initialisation de rundeck
