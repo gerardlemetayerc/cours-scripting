@@ -49,6 +49,9 @@ dataSource.driverClassName = org.mariadb.jdbc.Driver
 dataSource.url = jdbc:mysql://localhost/rundeckdb?autoReconnect=true&useSSL=false
 dataSource.username = rundeck
 dataSource.password = password
+## Sur Ubuntu, il faut rajouter le paramètre SSL en explicite
+#dataSource.properties.useSSL=false
+
 
 
 #dataSource.dbCreate = none
